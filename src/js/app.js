@@ -8,37 +8,12 @@ const overlap = document.querySelector('[data-id="overlap"]');
 const previewContainer = document.querySelector('[data-id="preview"]');
 const form = document.getElementById('form');
 const url = 'http://localhost:7070/';
-const xhr = new XMLHttpRequest();
 
-form.addEventListener('submit', fn);
+form.addEventListener('submit', fnFetch);
 
-function fn(evt) {
-  evt.preventDefault();
-  const formData = new FormData(evt.currentTarget);
-  xhr.open('POST', url);
-  formData.append('file', fileElem.value)
-  xhr.send(formData);
-  xhr.onload = () => {
-    console.log(xhr.response);
-    /*const data = JSON.parse(this.responseText);
-    console.log(data);*/
-  }
-}
-
-/*xhr.addEventListener('load', () => {
-  if (xhr.status >= 200 && xhr.status < 300) {
-  const img = document.createElement('img');
-  img.src = `http://localhost:7070/${xhr.response}`;
-  console.log(xhr.response.body);
-  console.log(img.src);
-  //document.body.appendChild(img);
-  }
-});*/
-
-
-async function fnF(evt) {
-  evt.preventDefault();
-  const formData = new FormData(evt.currentTarget);
+async function fnFetch(e) {
+  e.preventDefault();
+  const formData = new FormData(e.currentTarget);
   const response = await fetch(url, {
     method: 'POST',
     body: formData
@@ -47,29 +22,6 @@ async function fnF(evt) {
   const result = await response.json();
   console.log(result);
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 //передаём клик с перекрывающего элемента на нижележащий инпут
