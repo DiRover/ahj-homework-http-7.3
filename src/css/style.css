@@ -1,0 +1,42 @@
+.file-container {
+    width: 400px; height: 200px;
+    border-radius: 10px;
+    position: relative;
+    margin: 0 auto;
+}
+.overlapped {
+    position: absolute;
+    top: 0; left: 0; bottom: 0; right: 0; margin: 0;
+    opacity: 0.1;
+    width: 100%;
+}
+.overlap {
+    display: flex;
+    position: absolute;
+    border-radius: 10px;
+    justify-content: center;
+    align-items: center;
+    top: 0; left: 0; bottom: 0; right: 0; margin: 0;
+    width: 100%;
+    background: #eee;
+}
+
+.preview {
+    margin: 10px auto;
+    display: flex;
+    justify-content: center;
+}
+
+img {
+    height: 10%;
+    width: 10%;
+    margin-left: 5px;
+}
+
+.btn {
+    margin-top: 200px;
+}
+
+.test {
+    margin-top: 250px;
+}
