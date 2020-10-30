@@ -6,22 +6,93 @@
 const fileElem = document.querySelector('[data-id="file"]');
 const overlap = document.querySelector('[data-id="overlap"]');
 const previewContainer = document.querySelector('[data-id="preview"]');
+const imgTest = document.querySelector('.img-test');
 const form = document.getElementById('form');
 const url = 'http://localhost:7070/';
+const xhr = new XMLHttpRequest();
+let data;
 
 form.addEventListener('submit', fnFetch);
 
+
+
 async function fnFetch(e) {
   e.preventDefault();
-  const formData = new FormData(e.currentTarget);
+  console.log(e.currentTarget[0].files[0]);
+  const formData = new FormData();
+  formData.append('file', e.currentTarget[0].files[0]);
   const response = await fetch(url, {
     method: 'POST',
     body: formData
   });
-  console.log(response);
-  const result = await response.json();
-  console.log(result);
+  const result = await response.text();
+  imgTest.src = `${url}${result}`
+  console.log(`${url}${result}`);
 }
+
+
+
+
+
+
+
+
+
+
+
+
+/*
+function fnFetch(e) {
+  e.preventDefault();
+  const formData = new FormData();
+  formData.append('file', e.currentTarget[0].files[0]);
+  xhr.open('POST', url);
+  xhr.send(formData);
+  xhr.onload = () => {
+    console.log(xhr.response);
+    imgTest.src = `http://localhost:7070/${xhr.response}`;
+    //const data = JSON.parse(this.responseText);
+    //console.log(data);
+  }
+};*/
+
+
+
+
+
+/*
+fileElem.addEventListener('change', getFile);
+
+function getFile(e) {
+  data = e.target.files[0];
+  console.log(data);
+  const reader = new FileReader();
+  reader.onload = (event) => {
+    img = event.target.result;
+  };
+  reader.readAsDataURL(data);
+}
+*/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 //передаём клик с перекрывающего элемента на нижележащий инпут
@@ -33,7 +104,7 @@ function getImgs(arr) {
   const files = Array.from(arr);
   files.forEach((element) => {
     //чтобы загружать подряд две одинаковые картинки
-    fileElem.value = null;
+    //fileElem.value = null;
     const img = document.createElement('img');
     img.src = URL.createObjectURL(element);
     previewContainer.appendChild(img);
