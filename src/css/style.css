@@ -1,9 +1,15 @@
+.container {
+    display: flex;
+    justify-content: center;
+}
+
 .file-container {
     width: 400px; height: 200px;
     border-radius: 10px;
     position: relative;
-    margin: 0 auto;
+    margin: 0;
 }
+
 .overlapped {
     position: absolute;
     top: 0; left: 0; bottom: 0; right: 0; margin: 0;
@@ -21,16 +27,44 @@
     background: #eee;
 }
 
+.preview-container {
+    margin: 0 10px 0 0;
+}
+
 .preview {
-    margin: 10px auto;
+    margin: 0;
     display: flex;
     justify-content: center;
 }
 
+.upload-container {
+    margin: 0 0 0 10px;
+}
+
+.upload {
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+}
+
+[data-box="img"] {
+    display: flex;
+}
+
+[data-del="img"] {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 20px;
+    height: 20px;
+    margin: 0 0 0 10px;
+    border: 1px solid black;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
 img {
-    height: 10%;
-    width: 10%;
-    margin-left: 5px;
+    margin: 0 0 10px 5px;
 }
 
 .btn {

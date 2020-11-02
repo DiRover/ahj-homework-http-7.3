@@ -6,15 +6,26 @@
     <title>Task_7.3</title>
 </head>
 <body>
-    <div class="file-container">
-        <form class="form" data-id="form" id="form" enctype="multipart/form-data">
-            <input data-id="file" class="overlapped" type="file" accept="image/*">
-            <input type="submit" class="test">
-            <div data-id="overlap" class="overlap">Choose file</div>
-            <!--<button form="form" data-btn="save-btn" class="btn">Send</button>-->
-        </form>
+    <div>
+        <div class="container">
+            <div class="preview-container">
+                <div class="container-text">Preview picture:</div>
+                <div data-id="preview" class="preview"></div>
+            </div>
+            <div class="file-container">
+                <form class="form" data-id="form" id="form" enctype="multipart/form-data" method="POST">
+                    <input data-id="file" class="overlapped" type="file" accept="image/*">
+                    <!--<input type="submit" class="test">-->
+                    <div data-id="overlap" class="overlap">Choose file</div>
+                    <button form="form" data-btn="btn" class="btn">Send</button>
+                </form>
+            </div>
+            <div class="upload-container">
+                <div class="container-text">Preview picture from server:</div>
+                <div data-id="upload" class="upload"></div>
+            </div>
+        </div>
+        
     </div>
-    <div data-id="preview" class="preview"></div>
-    <div class="test"><img class="img-test"></div>
 </body>
 </html>

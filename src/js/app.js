@@ -1,118 +1,35 @@
+/* eslint-disable import/no-cycle */
 /* eslint-disable spaced-comment */
 /* eslint-disable no-console */
 /* eslint-disable prefer-destructuring */
 /* eslint-disable consistent-return */
+import getImgsPreview from './getImgsPreview';
+import getImgs from './getImgs';
+import sendFile from './sendFile';
+import delImg from './delImg';
+
 //получаем нужные эл-ты
 const fileElem = document.querySelector('[data-id="file"]');
 const overlap = document.querySelector('[data-id="overlap"]');
-const previewContainer = document.querySelector('[data-id="preview"]');
-const imgTest = document.querySelector('.img-test');
-const form = document.getElementById('form');
-const url = 'http://localhost:7070/';
-const xhr = new XMLHttpRequest();
-let data;
+export const preview = document.querySelector('[data-id="preview"]');
+export const upload = document.querySelector('[data-id="upload"]');
+export const form = document.getElementById('form');
+export const url = 'http://localhost:7070/';
 
-form.addEventListener('submit', fnFetch);
+//отправляем картинку на сервер
+form.addEventListener('submit', sendFile);
 
-
-
-async function fnFetch(e) {
-  e.preventDefault();
-  console.log(e.currentTarget[0].files[0]);
-  const formData = new FormData();
-  formData.append('file', e.currentTarget[0].files[0]);
-  const response = await fetch(url, {
-    method: 'POST',
-    body: formData
-  });
-  const result = await response.text();
-  imgTest.src = `${url}${result}`
-  console.log(`${url}${result}`);
-}
-
-
-
-
-
-
-
-
-
-
-
-
-/*
-function fnFetch(e) {
-  e.preventDefault();
-  const formData = new FormData();
-  formData.append('file', e.currentTarget[0].files[0]);
-  xhr.open('POST', url);
-  xhr.send(formData);
-  xhr.onload = () => {
-    console.log(xhr.response);
-    imgTest.src = `http://localhost:7070/${xhr.response}`;
-    //const data = JSON.parse(this.responseText);
-    //console.log(data);
-  }
-};*/
-
-
-
-
-
-/*
-fileElem.addEventListener('change', getFile);
-
-function getFile(e) {
-  data = e.target.files[0];
-  console.log(data);
-  const reader = new FileReader();
-  reader.onload = (event) => {
-    img = event.target.result;
-  };
-  reader.readAsDataURL(data);
-}
-*/
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+//удаляем картинку
+upload.addEventListener('click', delImg);
 
 //передаём клик с перекрывающего элемента на нижележащий инпут
 overlap.addEventListener('click', () => {
   fileElem.dispatchEvent(new MouseEvent('click'));
 });
-//функция, которая рисует превью картинок
-function getImgs(arr) {
-  const files = Array.from(arr);
-  files.forEach((element) => {
-    //чтобы загружать подряд две одинаковые картинки
-    //fileElem.value = null;
-    const img = document.createElement('img');
-    img.src = URL.createObjectURL(element);
-    previewContainer.appendChild(img);
-  });
-}
 
+//отрисовываем превью картинок перед отправкой
 fileElem.addEventListener('change', (e) => {
-  getImgs(e.target.files);
+  getImgsPreview(e.target.files);
 });
 
 overlap.addEventListener('dragover', (e) => {

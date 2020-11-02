@@ -3,4 +3,4 @@
 
 
 
-[PAGE Task 7.2 HTTP](https://dirover.github.io/ahj-homework-http-7.2/)
+[PAGE Task 7.3 HTTP](https://dirover.github.io/ahj-homework-http-7.2/)
