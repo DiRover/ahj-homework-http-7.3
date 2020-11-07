@@ -14,7 +14,8 @@ const overlap = document.querySelector('[data-id="overlap"]');
 export const preview = document.querySelector('[data-id="preview"]');
 export const upload = document.querySelector('[data-id="upload"]');
 export const form = document.getElementById('form');
-export const url = 'http://localhost:7070/';
+export const url = 'https://http-herocu-pictures.herokuapp.com/';
+//export const url = 'http://localhost:7070/';
 
 //отправляем картинку на сервер
 form.addEventListener('submit', sendFile);
