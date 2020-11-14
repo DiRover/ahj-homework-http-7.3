@@ -3,19 +3,21 @@
 /* eslint-disable no-console */
 /* eslint-disable prefer-destructuring */
 /* eslint-disable consistent-return */
-import getImgsPreview from './getImgsPreview';
 import getImgs from './getImgs';
 import sendFile from './sendFile';
 import delImg from './delImg';
+import getPage from './getPage';
 
 //получаем нужные эл-ты
 const fileElem = document.querySelector('[data-id="file"]');
 const overlap = document.querySelector('[data-id="overlap"]');
-export const preview = document.querySelector('[data-id="preview"]');
 export const upload = document.querySelector('[data-id="upload"]');
 export const form = document.getElementById('form');
 export const url = 'https://http-herocu-pictures.herokuapp.com/';
 //export const url = 'http://localhost:7070/';
+
+//получаем картиники давно хранящиеся на сервере
+document.addEventListener('DOMContentLoaded', getPage);
 
 //отправляем картинку на сервер
 form.addEventListener('submit', sendFile);
@@ -30,7 +32,7 @@ overlap.addEventListener('click', () => {
 
 //отрисовываем превью картинок перед отправкой
 fileElem.addEventListener('change', (e) => {
-  getImgsPreview(e.target.files);
+  sendFile(e.target.files[0]);
 });
 
 overlap.addEventListener('dragover', (e) => {
@@ -39,6 +41,5 @@ overlap.addEventListener('dragover', (e) => {
 
 overlap.addEventListener('drop', (e) => {
   e.preventDefault();
-  console.log(e.dataTransfer.files);
   getImgs(e.dataTransfer.files);
 });
