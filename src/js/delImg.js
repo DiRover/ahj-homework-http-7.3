@@ -2,10 +2,13 @@
 /* eslint-disable import/no-cycle */
 import { url } from './app';
 
+const showFiles = document.querySelector('[data-srv="show-files"]');
+
 // удаляем картинки с сервера
 export default async function delImg(e) {
   const { target } = e;
   if (!target.hasAttribute('data-del')) return; // если не попали на крестик выходим
+  showFiles.innerHTML = '';
   const parent = target.closest('[data-box="img"]'); // находим контейнер с картинкой и Х
   console.log(parent);
   const img = target.previousSibling; // находим картинку
@@ -16,6 +19,13 @@ export default async function delImg(e) {
   const response = await fetch(url, {
     method: 'PATCH',
     body: params,
+  });
+  const result = await response.json();
+  console.log(result);
+  result.forEach((picture) => {
+    const pic = document.createElement('div');
+    pic.innerHTML = picture;
+    showFiles.appendChild(pic);
   });
   parent.remove(); // удаляем контейнер с картинкой и Х
 }

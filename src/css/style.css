@@ -74,3 +74,11 @@ img {
 .test {
     margin-top: 250px;
 }
+
+[data-srv="show-files"] {
+    position: absolute;
+    width: 400px;
+    height: 100px;
+    border: black solid 2px;
+    top: 0;
+}

@@ -10,6 +10,7 @@ export default async function sendFile(e) {
     body: formData,
   });
   const result = await response.json();
+  console.log(result);
   const urlImg = `${url}${result.elem}`;
   getImgs(urlImg);
   form.reset();
