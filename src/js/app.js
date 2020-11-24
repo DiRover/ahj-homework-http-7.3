@@ -13,8 +13,8 @@ const fileElem = document.querySelector('[data-id="file"]');
 const overlap = document.querySelector('[data-id="overlap"]');
 export const upload = document.querySelector('[data-id="upload"]');
 export const form = document.getElementById('form');
-export const url = 'https://http-herocu-pictures.herokuapp.com/';
-//export const url = 'http://localhost:7070/';
+//export const url = 'https://http-herocu-pictures.herokuapp.com/';
+export const url = 'http://localhost:7070/';
 
 //получаем картиники давно хранящиеся на сервере
 document.addEventListener('DOMContentLoaded', getPage);
