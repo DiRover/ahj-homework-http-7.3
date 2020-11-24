@@ -32,5 +32,6 @@ export default async function delImg(e) {
     pic.innerHTML = picture;
     showFiles.appendChild(pic);
   });*/
+  
   parent.remove(); // удаляем контейнер с картинкой и Х
 }
