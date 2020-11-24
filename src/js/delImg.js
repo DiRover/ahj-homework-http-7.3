@@ -16,9 +16,11 @@ export default async function delImg(e) {
   console.log(src);
   const params = new URLSearchParams();
   params.append('src', src); // отправляем значение атрибута src на сервер
-  const response = await fetch(url, {
-    method: 'PATCH',
-    body: params,
+  params.append('id', src);
+  console.log(`${src}`)
+  const response = await fetch(`${src}`, {
+    method: 'DELETE',
+   // body: params,
   });
   const result = await response.text();
   console.log(result);
