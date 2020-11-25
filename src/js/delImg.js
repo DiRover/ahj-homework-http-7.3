@@ -19,19 +19,10 @@ export default async function delImg(e) {
   params.append('id', src);
   console.log(`${src}`)
   const response = await fetch(`${src}`, {
-    method: 'DELETE',
-   // body: params,
+    method: 'DELETE'
   });
   const result = await response.text();
   console.log(result);
-  showFiles.innerHTML = result;
-  /*const result = await response.json();
-  console.log(result);
-  result.forEach((picture) => {
-    const pic = document.createElement('div');
-    pic.innerHTML = picture;
-    showFiles.appendChild(pic);
-  });*/
-  
+  showFiles.innerHTML = result;  
   parent.remove(); // удаляем контейнер с картинкой и Х
 }
